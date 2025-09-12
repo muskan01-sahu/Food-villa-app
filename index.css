@@ -34,3 +34,22 @@
     flex-wrap: wrap;
 
 }
+
+.shimmer-card{
+    width: 200px;
+    height: 200px;
+    margin: 20px;
+    background-color: lightgrey;
+}
+
+.menu{
+    display: flex;
+    margin: 2rem;
+    padding: 2rem;
+    /* justify-content: space-around; */
+
+}
+
+.menu>div>img{
+    width: 50%;
+}

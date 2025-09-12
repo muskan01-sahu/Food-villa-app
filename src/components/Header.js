@@ -1,19 +1,22 @@
+import React from 'react';
 import { useState } from "react";
+import logo from "../assets/image/foodvilla.png";
+import { Link } from "react-router-dom";
 
-const LoggedInUser = () => {
-    // API call to check authentication
-    return true; 
-};
 
 export const Title = () =>(
+
     <a href="/">
         <img 
             className="logo" 
             alt="logo"
-            src="https://yt3.ggpht.com/ytc/AKedOLSpK3T_2RxkMYb-pk9oENQB0NvYpeOdXRgQe8i5=s800-c-k-c0x00ffffff-no-rj"
+            src={logo}
         />
+        
     </a>
+    
 );
+
 
 const Header = () => {
     const[isLoggedIn, setIsLoggedIn ] = useState(false);
@@ -23,14 +26,24 @@ const Header = () => {
 
             <div className="nav-items">
                 <ul>
+                    <Link to = "/home">
                     <li>Home</li>
-                    <li>About Us</li>
+                    </Link>
+                    
+                    <li><Link to = "/about">About </Link></li>
+
+                    <Link to = "/contact">
                     <li>Contact</li>
+                    </Link>
+
+                    <Link to = "/cart">
                     <li>Cart</li>
+                    </Link>
+
                 </ul>
 
             </div>
-            {  (isLoggedIn ?  < button onClick={() => setIsLoggedIn(false)}>Logout</button> : <button onClick={() => setIsLoggedIn(true)}>Login</button>) }
+            {  ( isLoggedIn ?  < button onClick={() => setIsLoggedIn(false)}>Logout</button> : <button onClick={() => setIsLoggedIn(true)}>Login</button>) }
 
         </div>
     );
