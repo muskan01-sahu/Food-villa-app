@@ -76,7 +76,7 @@ const Body = () => {
                         return(
                         <Link to ={"/restaurant/" + restaurant.info.id}
                          key={restaurant.info.id}>
-                            return  <RestaurantCard {...restaurant.info}/>;
+                             <RestaurantCard {...restaurant.info}/>
                         </Link>
                      ) }))
 
