@@ -12,7 +12,7 @@ import {Component} from "react";
 //             <Profile name= {"gfdfgdfgd"} xyz={"abs"}/>
 //        </div> 
 //     );
-// };
+// }; 
 
 class About1 extends Component{
 
