@@ -23,7 +23,7 @@ const Header = () => {
     const[isLoggedIn, setIsLoggedIn ] = useState(false);
     const isOnline = useOnline();
     return(
-        <div className="flex justify-between items-center bg-pink-50 shadow-lg sm:bg-blue-50 md:bg-yellow-50">
+        <div className="flex p-2 justify-between items-center bg-pink-50 shadow-lg sm:bg-blue-50 md:bg-yellow-50">
             <Title/>
 
             <div className="nav-items">
@@ -40,6 +40,10 @@ const Header = () => {
 
                     <Link to = "/cart">
                     <li className="px-2">Cart</li>
+                    </Link>
+
+                    <Link to = "/instamart">
+                        <li className="px-2">Instamart</li>
                     </Link>
 
                 </ul>

@@ -22,18 +22,18 @@ const RestaurantMenu = () => {
    
 
     return (!restaurant.cards) ? <Shimmer/>: (
-        <div className="menu">
+        <div className="flex p-5 m-5 place-content-evenly">
            <div>
-                <h1>Restaurant id: {resId}</h1>
-                <h2>{restaurant.cards?.[2].card?.card?.info?.name}</h2>
-                <img src= { IMG_CDN_URL + restaurant.cards?.[2].card?.card?.info?.cloudinaryImageId}/>
-                <h2>{restaurant.cards?.[2].card?.card?.info?.areaName}</h2>
-                <h2>{restaurant.cards?.[2].card?.card?.info?.city}</h2>
-                <h2>{restaurant.cards?.[2].card?.card?.info?.avgRating}</h2>
-                <h2>{restaurant.cards?.[2].card?.card?.info?.costForTwoMessage}</h2>
+                <h1 className="font-bold text-2xl">Restaurant id: {resId}</h1>
+                <h2 className="font-bold text-xl">{restaurant.cards?.[2].card?.card?.info?.name}</h2>
+                <img className="w-56 my-3 shadow-xl rounded-md" src= { IMG_CDN_URL + restaurant.cards?.[2].card?.card?.info?.cloudinaryImageId}/>
+                <h2 className="font-semibold">{restaurant.cards?.[2].card?.card?.info?.areaName}</h2>
+                <h2 className="font-semibold">{restaurant.cards?.[2].card?.card?.info?.city}</h2>
+                <h2 className="font-semibold">{restaurant.cards?.[2].card?.card?.info?.avgRating}</h2>
+                <h2 className="font-semibold">{restaurant.cards?.[2].card?.card?.info?.costForTwoMessage}</h2>
            </div>
            <div>
-            <h1>Menu</h1>
+            <h1 className="font-bold text-3xl">Menu</h1>
             <ul>
                  {menuItems?.map((item,index) => (
                         <li key={index}>
