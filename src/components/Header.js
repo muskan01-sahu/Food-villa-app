@@ -9,7 +9,7 @@ export const Title = () =>(
 
     <a href="/">
         <img 
-            className="logo" 
+            className="h-28 pl-2" 
             alt="logo"
             src={Logo}
         />
@@ -23,30 +23,33 @@ const Header = () => {
     const[isLoggedIn, setIsLoggedIn ] = useState(false);
     const isOnline = useOnline();
     return(
-        <div className="header">
+        <div className="flex justify-between items-center bg-pink-50 shadow-lg sm:bg-blue-50 md:bg-yellow-50">
             <Title/>
 
             <div className="nav-items">
-                <ul>
+                <ul className="flex px-10 ">
                     <Link to = "/home">
-                    <li>Home</li>
+                    <li className="px-2">Home</li>
                     </Link>
                     
-                    <li><Link to = "/about">About </Link></li>
+                    <li className="px-2"><Link to = "/about">About </Link></li>
 
                     <Link to = "/contact">
-                    <li>Contact</li>
+                    <li className="px-2">Contact</li>
                     </Link>
 
                     <Link to = "/cart">
-                    <li>Cart</li>
+                    <li className="px-2">Cart</li>
                     </Link>
 
                 </ul>
 
             </div>
-            <h1>{isOnline ? "✅":"🔴"}</h1>
-            {  ( isLoggedIn ?  < button onClick={() => setIsLoggedIn(false)}>Logout</button> : <button onClick={() => setIsLoggedIn(true)}>Login</button>) }
+            <h1 className="">{isOnline ? "✅":"🔴"}</h1>
+            {  ( isLoggedIn ?  
+            < button className="" onClick={() => setIsLoggedIn(false)}>Logout</button> 
+            : 
+            <button className=""  onClick={() => setIsLoggedIn(true)}>Login</button>) }
 
         </div>
     );

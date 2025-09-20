@@ -35,10 +35,10 @@ const Body = () => {
         ) : (
         <>
 
-            <div className="seach-container">
+            <div className="seach-container p-5 bg-pink-50 my-5">
                 <input
                 type="text"
-                className="search-input" 
+                className="focus:bg-green-200 p-2 m-2 bg-white " 
                 placeholder="Search" 
                 value={searchText}
                 onChange={(e) => {
@@ -46,7 +46,7 @@ const Body = () => {
                 }}
                 />
 
-                <button className="search-btn"
+                <button className="p-2 m-2 bg-purple-900 text-white rounded-md hover:bg-gray-500"
                 onClick={()=>{
                   //need to filter the data & update the state-restaurants
                   const data = filterData(searchText,allRestaurants);
@@ -58,7 +58,7 @@ const Body = () => {
                 >Search</button> 
             </div>
 
-            <div className="restaurant-list">
+            <div className="flex flex-wrap">
                
                 {
                     filteredRestaurants?.length === 0 ? (<h1>No Restaurant match your filter</h1>)
