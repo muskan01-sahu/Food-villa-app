@@ -1,6 +1,6 @@
 export const IMG_CDN_URL="https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/";
 
-export const FETCH_MENU_URL = (resId) => `https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=21.2677662&lng=81.618469&restaurantId=${resId}&catalog_qa=undefined&submitAction=ENTER`;
+export const FETCH_MENU_URL = (resId) => `https://www.swiggy.com/mapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=21.2677662&lng=81.618469&restaurantId=${resId}&submitAction=ENTER`;
 
 export const FETCH_URL = "https://www.swiggy.com/dapi/restaurants/list/v5?lat=21.2677662&lng=81.618469&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING";
 export const restaurantList = [

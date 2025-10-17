@@ -12,9 +12,10 @@ export const Title = () =>(
 
     <a href="/">
         <img 
+            data-testid= "logo"
             className="h-28 pl-2" 
             alt="logo"
-            src={Logo}
+            src="https://foodvilla.ng/wp-content/uploads/2020/12/FOOD_VILLA-removebg-preview.png"
         />
         
     </a>
@@ -47,7 +48,7 @@ const Header = () => {
                     </Link>
 
                     <Link to = "/cart">
-                    <li className="px-2">Cart - {cartItems.length} items</li>
+                    <li className="px-2" data-testid = "cart" >Cart - {cartItems.length} items</li>
                     </Link>
 
                     <Link to = "/instamart">
@@ -57,7 +58,7 @@ const Header = () => {
                 </ul>
 
             </div>
-            <h1 className="p-10 font-bold text-red-900">{isOnline ? "✅":"🔴"}</h1>
+            <h1 data-testid="online-status" className="p-10 font-bold text-red-900">{isOnline ? "✅":"🔴"}</h1>
            <span className="p-10 font-bold text-red-900">{user.name}</span>
             {  ( isLoggedIn ?  
             < button className="" onClick={() => setIsLoggedIn(false)}>Logout</button> 

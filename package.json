@@ -3,17 +3,26 @@
   "version": "1.0.0",
   "description": "loving you all",
   "scripts": {
-    "test": "jest",
     "start": "parcel index.html",
-    "build": "parcel build index.html"
+    "build": "parcel build index.html",
+    "test": "jest",
+    "watch-test": "jest --watch"
   },
   "author": "Muskan sahu",
   "license": "ISC",
   "devDependencies": {
-    "@babel/core": "^7.28.3",
+    "@babel/core": "^7.28.4",
+    "@babel/preset-env": "^7.28.3",
+    "@babel/preset-react": "^7.27.1",
     "@tailwindcss/postcss": "^4.1.13",
+    "@testing-library/dom": "^10.4.1",
+    "@testing-library/jest-dom": "^6.8.0",
+    "@testing-library/react": "^16.3.0",
     "autoprefixer": "^10.4.21",
+    "babel-jest": "^30.1.2",
     "babel-plugin-transform-remove-console": "^6.9.4",
+    "jest": "^30.1.3",
+    "jest-environment-jsdom": "^30.1.2",
     "parcel": "^2.15.4",
     "postcss": "^8.5.6",
     "tailwindcss": "^4.1.13"

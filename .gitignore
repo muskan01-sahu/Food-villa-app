@@ -38,3 +38,5 @@ Thumb.db
 
 
 .parcel-cache
+
+/coverage
