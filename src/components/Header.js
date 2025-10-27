@@ -1,6 +1,5 @@
 import React from 'react';
 import { useState ,useContext} from "react";
-import Logo from "../assets/image/foodvilla.png";
 import { Link } from "react-router-dom";
 import useOnline from '../utils/useOnline';
 import UserContext from "../utils/UserContext";
