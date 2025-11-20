@@ -1,20 +1,33 @@
 import { IMG_CDN_URL } from "../Constants";
 import{useContext}  from 'react';
-import UserContext from "../utils/UserContext";
 
-const RestaurantCard = ({name, cuisines, sla, cloudinaryImageId}) => {
+
+const RestaurantCard = ({name, costForTwo, avgRatingString, sla, cloudinaryImageId}) => {
     const lastMileTravelString = sla.lastMileTravelString;
 
-    const {user} = useContext(UserContext);
+    
     return(
         
-        <div className="w-56 p-2 m-2 shadow-lg bg-pink-50 ">
-             <img src={IMG_CDN_URL + cloudinaryImageId}  />  
-            
-            <h2 className="font-bold text-xl ">{name}</h2>
-            <h3>{cuisines.join(", ")}</h3>
-            <h4>{lastMileTravelString}</h4>
-            <h5 className="font-bold">{user.name}-{user.email}</h5>
+        <div className="bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 group h-full flex flex-col">
+             
+            <div className="relative overflow-hidden aspect-[4/3]">
+                <img 
+                    src={IMG_CDN_URL + cloudinaryImageId}  
+                    alt={name}
+                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                />
+            </div> 
+        
+            <div className="p-4 space-y-2">
+                <h2 className="font-bold text-xl text-gray-800 truncate">{name}</h2>
+                <h3 className="text-gray-600 text-sm">{costForTwo}</h3>
+                <div className="flex items-center justify-between">
+                    <h4 className="text-yellow-600 font-semibold flex items-center">
+                        ⭐ {avgRatingString}
+                    </h4>
+                    <h4 className="text-gray-500 text-sm">{lastMileTravelString}</h4>
+                </div>
+            </div>
         
         </div>
     );

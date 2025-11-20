@@ -1,18 +1,13 @@
-import React from 'react';
-import { useState ,useContext} from "react";
-import { Link } from "react-router-dom";
-import useOnline from '../utils/useOnline';
-import UserContext from "../utils/UserContext";
+import React, { useEffect, useState } from 'react';
+import { Link, useNavigate } from "react-router-dom";
 import { useSelector } from 'react-redux';
-import store from '../utils/store';
 
 
 export const Title = () =>(
 
-    <a href="/">
+    <a href="/" className="flex items-center hover:opacity-80 transition-opacity duration-200">
         <img 
-            data-testid= "logo"
-            className="h-28 pl-2" 
+            className="h-20 sm:h-26" 
             alt="logo"
             src="https://foodvilla.ng/wp-content/uploads/2020/12/FOOD_VILLA-removebg-preview.png"
         />
@@ -23,47 +18,77 @@ export const Title = () =>(
 
 
 const Header = () => {
-    const[isLoggedIn, setIsLoggedIn ] = useState(false);
-    const isOnline = useOnline();
+    const navigate = useNavigate();
+    const [isLoggedIn, setIsLoggedIn] = useState(
+        () => localStorage.getItem("isLoggedIn") === "true"
+    );
 
-    const {user} = useContext(UserContext);
+    useEffect(() => {
+        const handleAuthChange = () => {
+            setIsLoggedIn(localStorage.getItem("isLoggedIn") === "true");
+        };
+
+        window.addEventListener("authChange", handleAuthChange);
+        return () => window.removeEventListener("authChange", handleAuthChange);
+    }, []);
+
+    const handleLogout = () => {
+        localStorage.removeItem("isLoggedIn");
+        setIsLoggedIn(false);
+        window.dispatchEvent(new Event("authChange"));
+        navigate("/login");
+    };
+
+    const handleLoginNavigate = () => {
+        navigate("/login");
+    };
 
     const cartItems = useSelector(store => store.cart.items);
     console.log(cartItems);
     return(
-        <div className="flex p-2 justify-between items-center bg-pink-50 shadow-lg sm:bg-blue-50 md:bg-yellow-50">
-            <Title/>
+        <div className="sticky top-0 z-50 bg-amber-50 shadow-md border-b border-amber-200">
+            <div className="max-w-8xl mx-auto px-4 sm:px-4 lg:px-20">
+                <div className="flex justify-between items-center py-3">
+                        <Title/>
 
-            <div className="nav-items">
-                <ul className="flex px-10 ">
-                    <Link to = "/home">
-                    <li className="px-2">Home</li>
-                    </Link>
-                    
-                    <li className="px-2"><Link to = "/about">About </Link></li>
+                    <div className="nav-items">
+                        <ul className="flex items-center gap-2 sm:gap-4">
+                            <Link to="/home" className="group">
+                                <li className="px-px-4 py-2 rounded-lg text-gray-700 font-medium hover:bg-white hover:text-purple-600 transition-all duration-200">Home</li>
+                            </Link>
+                        
 
-                    <Link to = "/contact">
-                    <li className="px-2">Contact</li>
-                    </Link>
+                            <Link to = "/cart">
+                                <li className="px-px-4 py-2 rounded-lg text-gray-700 font-medium hover:bg-white hover:text-purple-600 transition-all duration-200" >
+                                    Cart - {cartItems.length} items
+                                    {cartItems.length > 0 && (
+                                                    <span className="absolute -top-1 -right-1 bg-green-500 text-white text-xs font-bold px-2 py-0.5 rounded-full">
+                                                        {cartItems.length}
+                                                    </span>
+                                    )}
+                                </li>
+                            </Link>
 
-                    <Link to = "/cart">
-                    <li className="px-2" data-testid = "cart" >Cart - {cartItems.length} items</li>
-                    </Link>
+                        </ul>   
 
-                    <Link to = "/instamart">
-                        <li className="px-2">Instamart</li>
-                    </Link>
-
-                </ul>
+                    </div>
+            
+                    {  ( isLoggedIn ?  
+                    <button 
+                    className="px-5 py-2.5 bg-red-500 text-white font-medium rounded-lg hover:bg-red-600 active:scale-95 transition-all duration-200 shadow-sm" 
+                    onClick={handleLogout}>
+                        Logout
+                    </button> 
+                    : 
+                    <button 
+                    className="px-5 py-2.5 bg-purple-600 text-white font-medium rounded-lg hover:bg-purple-700 active:scale-95 transition-all duration-200 shadow-sm" 
+                    onClick={handleLoginNavigate}>
+                        Login
+                    </button>
+                    )}
 
             </div>
-            <h1 data-testid="online-status" className="p-10 font-bold text-red-900">{isOnline ? "✅":"🔴"}</h1>
-           <span className="p-10 font-bold text-red-900">{user.name}</span>
-            {  ( isLoggedIn ?  
-            < button className="" onClick={() => setIsLoggedIn(false)}>Logout</button> 
-            : 
-            <button className=""  onClick={() => setIsLoggedIn(true)}>Login</button>) }
-
+            </div>
         </div>
     );
 };

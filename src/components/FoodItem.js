@@ -1,6 +1,4 @@
 import { IMG_CDN_URL } from "../Constants";
-import{useContext}  from 'react';
-import UserContext from "../utils/UserContext";
 
 const FoodItem = ({name, description, imageId, price}) => {
     return(

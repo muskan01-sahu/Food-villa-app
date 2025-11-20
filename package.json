@@ -3,15 +3,13 @@
   "version": "1.0.0",
   "description": "loving you all",
   "homepage": "https://muskan01-sahu.github.io/Food-villa-app",
-
   "scripts": {
-    "start": "parcel index.html",
+    "dev": "parcel index.html",
     "build": "parcel build index.html --public-url ./",
     "test": "jest",
     "watch-test": "jest --watch",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d dist"
-
   },
   "author": "Muskan sahu",
   "license": "ISC",
@@ -38,7 +36,8 @@
     "react": "^19.1.1",
     "react-dom": "^19.1.1",
     "react-redux": "^9.2.0",
-    "react-router-dom": "^6.22.2"
+    "react-router-dom": "^6.22.2",
+    "redux-persist": "^6.0.0"
   },
   "browserslist": [
     "last 2 versions"

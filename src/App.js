@@ -1,98 +1,106 @@
-import React, { lazy,Suspense, useState } from "react";
-import ReactDOM from "react-dom/client";
+import React, { lazy, Suspense } from "react";
 import Header from "./components/Header";
-import Body from './components/Body';
 import Footer from "./components/Footer";
-import {createBrowserRouter, RouterProvider, Outlet} from "react-router-dom";
-import About from "./components/About";
+import { createHashRouter, RouterProvider, Outlet, useLocation } from "react-router-dom";
 import Error from "./components/Error";
-import Contact from "./components/Contact";
-import Home from "./components/Home";
-import RestaurantMenu from "./components/RestaurantMenu";
-import Profile from "./components/Profile";
 import Shimmer from "./components/Shimmer";
-import UserContext from "./utils/UserContext";
 import { Provider } from "react-redux";
-import store from "./utils/store";
-import Cart from "./components/Cart";
-const Instamart = lazy(() => import('./components/Instamart'));
+import store, { persistor } from "./utils/store";
+import { PersistGate } from "redux-persist/integration/react";
+import ProtectedRoute from "./utils/ProtectedRoute";
 
-const AppLayout = () =>{
-    const[user,setUser]=useState({
-        name: "Tapini Rao",
-        email: "tapinirao16@gmail.com",
-    });
+const Body = lazy(() => import("./components/Body"));
+const Home = lazy(() => import("./components/Home"));
+const RestaurantMenu = lazy(() => import("./components/RestaurantMenu"));
+const Cart = lazy(() => import("./components/Cart"));
+const CheckOutPage = lazy(() => import("./components/CheckOutPage"));
+const PlaceOrderPage = lazy(() => import("./components/PlaceOrderPage"));
+const LoginPage = lazy(() => import("./components/LoginPage"));
 
-    return(
-        <Provider store={store}>
-        <UserContext.Provider 
-        value={{
-            user: user,
-            setUser: setUser,
-        }}>
-        <Header/>
-        <Outlet/>
-        <Footer/>
-        </UserContext.Provider> 
-        </Provider>
-    );
+const AppLayout = () => {
+  const location = useLocation();
+  const hideChrome = location.pathname === "/login";
+
+  return (
+    <Provider store={store}>
+      <PersistGate loading={<Shimmer />} persistor={persistor}>
+        {!hideChrome && <Header />}
+        <Suspense fallback={<Shimmer />}>
+          <Outlet />
+        </Suspense>
+        {!hideChrome && <Footer />}
+      </PersistGate>
+    </Provider>
+  );
 };
    
-const appRouter = createBrowserRouter([
+const appRouter = createHashRouter([
     {
         path:"/",
         element:<AppLayout/>,
         errorElement:<Error/>,
         children:[
             {
+                path: "/login",
+                element: <LoginPage />,
+            },
+            {
                 path:"/",
-                element:<Body user={{
-                    name: "Tanisha rez",
-                    email: "tanisahu12@gmail.com",
-                }} />,
+                element: (
+                    <ProtectedRoute>
+                      <Body />
+                    </ProtectedRoute>
+                ),
             },
             {
                 path:"/home",
-                element:<Home/>,
+                element:(
+                    <ProtectedRoute>
+                      <Home />
+                    </ProtectedRoute>
+                ),
             },
-            {
-                path:"/about",
-                element:<About/>,
-                children:[
-                    {
-                        path:"profile",
-                        element:<Profile/>, 
-                    }, 
-                    
-                ],
-            },
-            {
-                path:"/contact",
-                element:<Contact/>, 
-            },
+
             {
                 path:"/restaurant/:resId",
-                element:<RestaurantMenu/>,
-            
-            },
-            {
-                path:"/instamart",
-                element:
-                <Suspense fallback={<Shimmer/>}>
-                    <Instamart/>
-                </Suspense>,
-            
+                element:(
+                    <ProtectedRoute>
+                        <RestaurantMenu />
+                    </ProtectedRoute>  
+                ),
             },
             {
                 path:"/cart",
-                element:<Cart/>,
+                element: (
+                    <ProtectedRoute>
+                      <Cart />
+                    </ProtectedRoute>
+                ),
             },
-            
+            {
+                path:"/checkout",
+                element: (
+                    <ProtectedRoute>
+                      <CheckOutPage />
+                    </ProtectedRoute>
+                ),
+            },
+            {
+                path:"/placeorder",
+                element: (
+                    <ProtectedRoute>
+                      <PlaceOrderPage />
+                    </ProtectedRoute>
+                ),
+            },
         ],
     },
 ]);     
         
-const root = ReactDOM.createRoot(document.getElementById("root")); 
+const App = () => {
+    return <RouterProvider router={appRouter}/>;
+}
 
-root.render(<RouterProvider router={appRouter}/>);
+export default App;
+
 
