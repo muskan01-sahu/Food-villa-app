@@ -1,7 +1,7 @@
-import React, { lazy, Suspense } from "react";
+import React, { lazy, Suspense, useEffect, useState } from "react";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
-import { createHashRouter, RouterProvider, Outlet, useLocation } from "react-router-dom";
+import { createHashRouter, RouterProvider, Outlet } from "react-router-dom";
 import Error from "./components/Error";
 import Shimmer from "./components/Shimmer";
 import { Provider } from "react-redux";
@@ -18,8 +18,22 @@ const PlaceOrderPage = lazy(() => import("./components/PlaceOrderPage"));
 const LoginPage = lazy(() => import("./components/LoginPage"));
 
 const AppLayout = () => {
-  const location = useLocation();
-  const hideChrome = location.pathname === "/login";
+  const [hideChrome, setHideChrome] = useState(false);
+
+  useEffect(() => {
+    const updateChromeVisibility = () => {
+      if (typeof window === "undefined") return;
+      const hashPath = window.location.hash.replace("#", "");
+      setHideChrome(hashPath === "/login");
+    };
+
+    updateChromeVisibility();
+    window.addEventListener("hashchange", updateChromeVisibility);
+
+    return () => {
+      window.removeEventListener("hashchange", updateChromeVisibility);
+    };
+  }, []);
 
   return (
     <Provider store={store}>
