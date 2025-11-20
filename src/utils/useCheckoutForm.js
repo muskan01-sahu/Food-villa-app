@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { updateCheckoutDetails } from "../utils/checkoutSlice";
+import { updateCheckoutDetails } from "./checkoutSlice";
 
 const useCheckoutForm = () => {
   const dispatch = useDispatch();
