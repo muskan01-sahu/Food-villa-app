@@ -170,10 +170,72 @@ Food-villa-app/
 │       ├── useLogin.js
 │       ├── useRestaurant.js
 │       ├── useSearch.js
-
 ```
+---
+
+# 📌 **Component Descriptions**
+
+### components/
+
+
+
+| File                  | Purpose                                                  |
+| --------------------- | -------------------------------------------------------- |
+| **Body.js**           | Main layout for home page containing restaurant listing. |
+| **Cart.js**           | Displays all cart items using Redux cartSlice.           |
+| **CheckOutPage.js**   | Collects user details & order summary for checkout.      |
+| **Contact.js**        | Contact information page.                                |
+| **Error.js**          | Error boundary / fallback UI.                            |
+| **FoodItem.js**       | Renders single food item inside restaurant menu.         |
+| **Footer.js**         | Page footer layout.                                      |
+| **Header.js**         | Navbar containing logo, login, cart count, etc.          |
+| **Home.js**           | Home listing with category filters & search.             |
+| **LoginPage.js**      | Login form using useLogin hook + userContext.            |
+| **PlaceOrderPage.js** | Final order placement page.                              |
+| **RestaurantCard.js** | Card UI for each restaurant.                             |
+| **RestaurantMenu.js** | Restaurant details + menu items + category filters.      |
+| **Shimmer.js**        | Skeleton loader while fetching data.                     |
+
+
 
 ---
+
+# 📌 **utils/ Files Description**
+
+### /utils
+
+
+
+| File                     | Purpose                                             |
+| ------------------------ | --------------------------------------------------- |
+| **ProtectedRoute.js**    | Restricts routes for authenticated users only.      |
+| **SearchContext.js**     | Global search state using React Context.            |
+| **UserContext.js**       | Stores logged-in user data globally.                |
+| **cartSlice.js**         | Redux slice for managing cart operations.           |
+| **checkoutSlice.js**     | Redux slice for checkout form + order flow.         |
+| **helper.js**            | Utility functions (formatting, calculations, etc.). |
+| **store.js**             | Redux store configuration.                          |
+| **useCart.js**           | Custom hook for cart logic.                         |
+| **useCategoryFilter.js** | Filtering categories in restaurant menu.            |
+| **useCheckoutForm.js**   | Checkout form state handler.                        |
+| **useLogin.js**          | Form handling + authentication logic.               |
+| **useRestaurant.js**     | Fetch & manage restaurant details.                  |
+| **useSearch.js**         | Search logic hook used in Home.js.                  |
+
+
+
+---
+
+# 🛠️ **Available Scripts**
+
+| Command         | Description              |
+| --------------- | ------------------------ |
+| `npm start`     | Runs development server  |
+| `npm test`      | Runs Jest test cases     |
+| `npm run build` | Creates production build |
+
+---
+
 
 ## 🤝 Contributing
 
