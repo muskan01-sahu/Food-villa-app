@@ -62,6 +62,8 @@ Use:
 
 ```bash
 npm start
+or
+npm run start
 ```
 
 Parcel will:
@@ -120,182 +122,55 @@ Public restaurant API endpoints may change. If needed:
 ```
 Food-villa-app/
 │
-├── src/
-│   ├── components/
-│   ├── utils/
-│   ├── assets/
-│   └── ...
-├── package.json
+├── .babelrc
+├── .gitignore
+├── .postcssrc
+├── README.md
+├── index.css
 ├── index.html
-└── README.md
-```
-
----
-
-## 🤝 Contributing
-
-Feel free to open issues or contribute improvements.
-
----
-
-## 📝 License
-
-This project is open-source and free to use.
-
-
-
-**Routing**
-
-Route  	      Component/Page	      Description
-
-#/	      Home.jsx    	Product listing with filters
-
-#/product/:id	ProductDetail.jsx	Single product details & add to cart
-
-#/cart	Cart.jsx	Shopping cart, update quantity, remove items
-
-#/checkout	CheckoutPage.jsx	Checkout form and order summary
-
-#/placeorder	PlaceOrder.jsx	Order confirmation page
-
-**State Management**
-
-**Component Responsibilities**
-
-**API & Data Flow**
-
-**Responsive Design**
-
-**Design Decisions & Trade-Offs**
-
-**Redux Use**
-
-**Tailwind CSS**
-
-**React**
-
----
-
-## 📦 Prerequisites
-
-Before installing the project, ensure you have:
-
-* **Node.js** (v16 or higher)
-* **npm** (comes with Node)
-
-Check versions:
-
-```bash
-node -v
-npm -v
-```
-
----
-
-## 🚀 Getting Started (Local Setup)
-
-Follow these steps to run the application on your local machine.
-
----
-
-### ✅ 1. Clone the Repository
-
-```bash
-git clone https://github.com/muskan01-sahu/Food-villa-app.git
-```
-
-Navigate into the project folder:
-
-```bash
-cd Food-villa-app
-```
-
----
-
-### ✅ 2. Install Dependencies
-
-Run the following command to install all required packages:
-
-```bash
-npm install
-```
-
-This installs everything from `package.json`.
-
----
-
-### ✅ 3. Start the Development Server
-
-Use:
-
-```bash
-npm start
-```
-
-Parcel will:
-
-* Bundle the project
-* Start a development server
-* Enable hot reloading (HMR)
-
-Your application will be available at:
-
-```
-http://localhost:1234/
-```
-
-(If port 1234 is busy, Parcel will select another port.)
-
----
-
-## 🔧 Build for Production
-
-To generate an optimized build in the `dist/` folder:
-
-```bash
-npm run build
-```
-
----
-
-## ❗ Troubleshooting
-
-### ❌ Parcel not found
-
-Run:
-
-```bash
-npm install -g parcel
-```
-
-Or use npx:
-
-```bash
-npx parcel src/index.html
-```
-
-### ❌ API not loading
-
-Public restaurant API endpoints may change. If needed:
-
-* Update API URL inside your utils/config file.
-* Use mock data as fallback.
-
----
-
-## 📁 Project Structure
-
-```
-Food-villa-app/
+├── index.js
+├── jest.config.js
+├── package-lock.json
+├── package.json
+├── tailwind.config.js
 │
 ├── src/
+│   ├── App.js
+│   ├── Constants.js
+│   │
+│   ├── __tests__/               # Jest test files
+│   │
 │   ├── components/
+│   │   ├── Body.js
+│   │   ├── Cart.js
+│   │   ├── CheckOutPage.js
+│   │   ├── Contact.js
+│   │   ├── Error.js
+│   │   ├── FoodItem.js
+│   │   ├── Footer.js
+│   │   ├── Header.js
+│   │   ├── Home.js
+│   │   ├── LoginPage.js
+│   │   ├── PlaceOrderPage.js
+│   │   ├── RestaurantCard.js
+│   │   ├── RestaurantMenu.js
+│   │   ├── Shimmer.js
+│   │
 │   ├── utils/
-│   ├── assets/
-│   └── ...
-├── package.json
-├── index.html
-└── README.md
+│       ├── ProtectedRoute.js
+│       ├── SearchContext.js
+│       ├── UserContext.js
+│       ├── cartSlice.js
+│       ├── checkoutSlice.js
+│       ├── helper.js
+│       ├── store.js
+│       ├── useCart.js
+│       ├── useCategoryFilter.js
+│       ├── useCheckoutForm.js
+│       ├── useLogin.js
+│       ├── useRestaurant.js
+│       ├── useSearch.js
+
 ```
 
 ---
@@ -309,4 +184,12 @@ Feel free to open issues or contribute improvements.
 ## 📝 License
 
 This project is open-source and free to use.
+
+
+
+
+
+
+
+
 
