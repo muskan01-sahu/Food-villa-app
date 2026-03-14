@@ -1,0 +1,46 @@
+{
+  "name": "namaste-react-app",
+  "version": "1.0.0",
+  "description": "loving you all",
+  "homepage": "https://muskan01-sahu.github.io/Food-villa-app",
+  "scripts": {
+    "dev": "parcel index.html",
+    "build": "parcel build index.html --public-url ./",
+    "test": "jest",
+    "watch-test": "jest --watch",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist"
+  },
+  "author": "Muskan sahu",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/core": "^7.28.4",
+    "@babel/preset-env": "^7.28.3",
+    "@babel/preset-react": "^7.27.1",
+    "@tailwindcss/postcss": "^4.1.13",
+    "@testing-library/dom": "^10.4.1",
+    "@testing-library/jest-dom": "^6.8.0",
+    "@testing-library/react": "^16.3.0",
+    "autoprefixer": "^10.4.21",
+    "babel-jest": "^30.1.2",
+    "babel-plugin-transform-remove-console": "^6.9.4",
+    "gh-pages": "^6.3.0",
+    "jest": "^30.1.3",
+    "jest-environment-jsdom": "^30.1.2",
+    "parcel": "^2.15.4",
+    "postcss": "^8.5.6",
+    "tailwindcss": "^4.1.13"
+  },
+  "dependencies": {
+    "@reduxjs/toolkit": "^2.9.0",
+    "react": "^19.1.1",
+    "react-dom": "^19.1.1",
+    "react-redux": "^9.2.0",
+    "react-router": "^6.14.2",
+    "react-router-dom": "^6.14.2",
+    "redux-persist": "^6.0.0"
+  },
+  "browserslist": [
+    "last 2 versions"
+  ]
+}
